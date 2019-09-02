@@ -38,7 +38,7 @@ const murderer = 'Professor Plum';
 const changeMurderer = function() {
   murderer = 'Mrs. Peacock';
 }
-// I expect the code to break on line 39, as there is an attempt to change a constant, murderer
+// I expect the code to break on line 39, as there is an attempt to change a constant, murderer.
 
 const declareMurderer = function() {
   return `The murderer is ${murderer}.`;
@@ -66,7 +66,7 @@ const secondVerdict = `The murderer is ${murderer}.`;
 console.log('Second Verdict: ', secondVerdict);
 ```
 
-<!-- i predict it will declare Mrs. Peacock then Professor Plum as the murderer -->
+<!-- i predict it will declare Mrs. Peacock then Professor Plum as the murderer. declareMurderer is making a change to the murderer, whilst secondVerdict is just going directly to the original let variable -->
 
 
 #### Episode 4
@@ -83,10 +83,10 @@ const declareAllSuspects = function() {
 
 const suspects = declareAllSuspects();
 console.log(suspects);
-// will show Miss Scarlet, Professor Plum and Colonel Mustard
+// will show Miss Scarlet, Professor Plum and Colonel Mustard. It's reading the original let statements, then making a change to suspectThree. since they are let statements, it's ok to change Colonel Mustard.
 
 console.log(`Suspect three is ${suspectThree}.`);
-// will show Mrs Peacock
+// will show Mrs Peacock, as it's referring to the original let variable for suspectThree
 ```
 
 #### Episode 5
@@ -111,7 +111,7 @@ const declareWeapon = function() {
 changeWeapon('Revolver');
 const verdict = declareWeapon();
 console.log(verdict);
-// The weapon is Revolver
+// The weapon is Revolver - changeWeapon function has been run just before the verdict, and because scenario.weapon is not changing the structure of scenario, it's okay to make the change.
 ```
 
 #### Episode 6
@@ -137,7 +137,7 @@ changeMurderer();
 const verdict = declareMurderer();
 console.log(verdict);
 
-// I expect the murderer is Mrs White
+// I expect the murderer is Mrs White. plotTwist has been called (changing the murderer to Mrs White), and it's okay to do this because the original variable was created using let. because Mrs White cannot be changed, the changeMurderer function won't work.
 ```
 
 #### Episode 7
